@@ -44,6 +44,7 @@ int main()
     inet_pton(AF_INET, "127.0.0.1", &addr.sin_addr.s_addr);
     int a = 1;
     setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &a, sizeof(int));
+
     bind(fd, (sockaddr *)&addr, sizeof(addr));
     listen(fd, 10);
 
