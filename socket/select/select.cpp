@@ -66,23 +66,23 @@ int main()
             if (FD_ISSET(i, &tempfds))
             {
                 char buff[64];
-                while (1)
+                //while (1)
+                //{
+                int nread = read(i, buff, 64);
+                write(i, "yes", sizeof("yes"));
+                if (nread <= 0)
                 {
-                    int nread = read(i, buff, 64);
-                    write(i, "yes", sizeof("yes"));
-                    if (nread <= 0)
-                    {
-                        FD_CLR(i, &readfds);
-                        close(i);
-                        break;
-                        //pop unuse fd and close
-                    }
-                    printf("%s\n", buff);
-                    if (--n == 0) //only one fd change
-                    {
-                        continue;
-                    }
+                    FD_CLR(i, &readfds);
+                    close(i);
+                    break;
+                    //pop unuse fd and close
                 }
+                printf("%s\n", buff);
+                if (--n == 0) //only one fd change
+                {
+                    continue;
+                }
+                //}
             }
         }
     }
