@@ -18,7 +18,7 @@ int main()
     //port overuse
     int a = 1;
     setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &a, sizeof(int));
-    bind(fd, (sockaddr *)&addr, sizeof(addr));
+    bind(fd, (sockaddr*) &addr, sizeof(addr));
     listen(fd, 1024);
     //epoll
     int tree = epoll_create(1024);
