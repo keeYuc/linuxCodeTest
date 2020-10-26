@@ -51,14 +51,14 @@ int main()
                 event.data.fd = readFd;
                 event.events = EPOLLIN | EPOLLET; //et mode
                 epoll_ctl(tree, EPOLL_CTL_ADD, readFd, &event);
-                std::cout << "yes2" << std::endl;
+
                 continue;
             }
 
             while (outEvent[i].data.fd != fd)
             {
-                char buff[2];
-                int n = read(outEvent[i].data.fd, buff, 2);
+                char buff[1024];
+                int n = read(outEvent[i].data.fd, buff, 1024);
                 if (n == -1)
                 {
 

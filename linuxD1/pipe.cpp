@@ -25,11 +25,13 @@ int main()
     {
         std::cout << getpid() << std::endl;
         close(mypipe[1]);
-        char *a[1024];
+        char* a[1024];
         read(mypipe[0], a, 1024);
         std::cout << a << std::endl;
+        
         printf("%s----", a);
         std::cout << "zi --- " << std::endl;
+        
     }
 
     return 0;
